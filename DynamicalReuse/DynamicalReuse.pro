@@ -1,14 +1,15 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-06-18T19:19:12
+# Project created by QtCreator 2019-06-19T14:41:16
 #
 #-------------------------------------------------
 
 QT       += core gui
+QT       += widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = DinamicalReuse
+TARGET = DynamicalReuse
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,12 +27,10 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        list_widget.cpp \
-        qdynamicbutton.cpp
+        list_model.cpp
 
 HEADERS += \
-        list_widget.h \
-        qdynamicbutton.h
+        list_model.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
