@@ -1,4 +1,4 @@
-# DinamicalReuse
+# DynamicalReuse
 
 Задание:
 
