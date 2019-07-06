@@ -1,58 +1,68 @@
 #include "list_model.h"
 
-#include <QLocale>
-
-ListModel::ListModel(QObject *parent)
-    :QAbstractListModel(parent)
+ListModel::ListModel() : QAbstractListModel ()
 {
 
+}
+
+ListModel::~ListModel(){
+
+}
+
+void ListModel::Add(CheckboxItem* item)
+{
+    beginInsertRows(QModelIndex(),itemList.count(),itemList.count());
+    itemList.append(item);
+    endInsertRows();
+}
+
+void ListModel::Add(ButtonItem* item)
+{
+    beginInsertRows(QModelIndex(),itemList.count(),itemList.count());
+    itemList.append(item);
+    endInsertRows();
 }
 
 
 int ListModel::rowCount(const QModelIndex &parent) const
 {
-    return _RowCount;
+    return itemList.count();
 }
 
 QVariant ListModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid())
+    if (!index.isValid()){
         return QVariant();
-    if(role == Qt::DisplayRole || role == Qt::EditRole){
-        return _itemdata.value(index,QVariant());
     }
-    return QVariant();
-}
-
-bool ListModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    if(!index.isValid())
-        return false;
-    if(role == Qt::DisplayRole || role == Qt::EditRole){
-        _itemdata.insert(index,value);
-        emit dataChanged(index, index);
+    CheckboxItem* checkbox = dynamic_cast<CheckboxItem*>(itemList.at(index.row()));
+    ButtonItem* button = dynamic_cast<ButtonItem*>(itemList.at(index.row()));
+    switch(role){
+    case Qt::DisplayRole:{
+        if(checkbox){
+          return QVariant::fromValue(checkbox->type);
+        }
+        else if (button) {
+          return QVariant::fromValue(button->type);
+        }
+        break;
     }
-    return false;
+    case Qt::SizeHintRole:
+        return QSize(0,60);
+
+    case ButtonRole:{
+        QVariant v;
+        v.setValue(button);
+        return v;
+    }
+    case CheckboxRole:{
+        QVariant v;
+        v.setValue(checkbox);
+        return v;
+    }
+
+    default:
+            return QVariant();
+    }
+
+return QVariant();
 }
-
-Qt::ItemFlags ListModel::flags(const QModelIndex &index) const
-{
-    if(!index.isValid())
-        return Qt::NoItemFlags;
-    return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
-}
-
-WidgetModel::WidgetModel(QObject *parent) : ListModel (parent)
-{
-
-}
-
-void WidgetModel::newLine(QString wid)
-{
-   insertRow(_RowCount);
-   _RowCount++;
-   setData(index(_RowCount-1),wid,Qt::EditRole);
-}
-
-
-

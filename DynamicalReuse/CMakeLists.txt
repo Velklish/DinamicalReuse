@@ -10,6 +10,8 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt5 COMPONENTS Core REQUIRED)
 
 set(DynamicalReuse_SRCS
+	base_items.cpp
+	listmode_delegate.cpp
     list_model.cpp
     main_window.cpp
     main.cpp
@@ -17,6 +19,8 @@ set(DynamicalReuse_SRCS
 set(DynamicalReuse_HDRS
 	main_window.h
 	list_model.h
+	base_items.h
+	listmodel_delegate.h
 )
 
 
@@ -29,4 +33,3 @@ get_target_property(QT5_QMAKE_EXECUTABLE Qt5::qmake IMPORTED_LOCATION)
 
     add_custom_command(TARGET DynamicalReuse POST_BUILD
        COMMAND ${QT5_WINDEPLOYQT_EXECUTABLE} --qmldir ${CMAKE_SOURCE_DIR} $<TARGET_FILE_DIR:DynamicalReuse>)
-
