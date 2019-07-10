@@ -11,12 +11,6 @@ enum widget_type{
     Button,
 };
 
-/*enum states{
-  checked = Qt::Checked,
-  uncheked = Qt::Unchecked,
-  partly_checked = Qt::
-};*/
-
 class BaseItems
 {
 public:
@@ -71,9 +65,6 @@ Q_DECLARE_METATYPE(CheckboxItem*);
 Q_DECLARE_METATYPE(CheckboxItem);
 
 Q_DECLARE_METATYPE(widget_type);
-
-//Q_DECLARE_METATYPE(BaseItems);
-//Q_DECLARE_METATYPE(BaseItems*);
 
 
 #endif // BASE_ITEMS_H
