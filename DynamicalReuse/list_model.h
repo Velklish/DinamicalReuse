@@ -7,8 +7,13 @@
 #include <QAbstractListModel>
 
 enum CustomRoles{
-  ButtonRole=Qt::UserRole+1,
-  CheckboxRole,
+
+  ButtonTextRole=Qt::UserRole+1,
+  ButtonSizeRole,
+  CheckboxTextRole,
+  CheckboxStateRole,
+  CheckboxSizeRole,
+  TypeRole,
 
 };
 
@@ -21,19 +26,20 @@ public:
     ~ListModel() override;
 
 private:
-    typedef QList<BaseItems*> BaseItem;
-    BaseItem itemList;
+    QList<BaseItems*> itemList;
 
-    // QAbstractItemModel interface
 public:
 
-    void Add(CheckboxItem*);
-    void Add(ButtonItem*);
+    void Add(BaseItems*);
 
     virtual int rowCount(const QModelIndex &parent) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
-
+    virtual Qt::ItemFlags flags(const QModelIndex &index) const override;
+    virtual bool setData(const QModelIndex &index, const QVariant &value, int role) override;
 };
+
+
+
 
 
 

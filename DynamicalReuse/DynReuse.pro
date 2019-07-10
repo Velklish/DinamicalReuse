@@ -27,7 +27,7 @@ CONFIG += c++11
 SOURCES += \
         base_items.cpp \
         list_model.cpp \
-        listmode_delegate.cpp \
+        listmodel_delegate.cpp \
         main.cpp \
         main_window.cpp
 

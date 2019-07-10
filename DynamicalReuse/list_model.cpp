@@ -7,17 +7,14 @@ ListModel::ListModel() : QAbstractListModel ()
 
 ListModel::~ListModel(){
 
+    int count = itemList.count();
+
+    for(int i=0; i < count; i++){
+        delete itemList[i];
+    }
 }
 
-void ListModel::Add(CheckboxItem* item)
-{
-    beginInsertRows(QModelIndex(),itemList.count(),itemList.count());
-    itemList.append(item);
-    endInsertRows();
-}
-
-void ListModel::Add(ButtonItem* item)
-{
+void ListModel::Add(BaseItems *item){
     beginInsertRows(QModelIndex(),itemList.count(),itemList.count());
     itemList.append(item);
     endInsertRows();
@@ -34,35 +31,60 @@ QVariant ListModel::data(const QModelIndex &index, int role) const
     if (!index.isValid()){
         return QVariant();
     }
-    CheckboxItem* checkbox = dynamic_cast<CheckboxItem*>(itemList.at(index.row()));
-    ButtonItem* button = dynamic_cast<ButtonItem*>(itemList.at(index.row()));
+
+    BaseItems *item = itemList.at(index.row());
+
     switch(role){
-    case Qt::DisplayRole:{
-        if(checkbox){
-          return QVariant::fromValue(checkbox->type);
-        }
-        else if (button) {
-          return QVariant::fromValue(button->type);
-        }
-        break;
-    }
+
     case Qt::SizeHintRole:
         return QSize(0,60);
 
-    case ButtonRole:{
-        QVariant v;
-        v.setValue(button);
-        return v;
+    case TypeRole:{
+        return item->getType();
     }
-    case CheckboxRole:{
-        QVariant v;
-        v.setValue(checkbox);
-        return v;
+    case ButtonTextRole:{
+        ButtonItem* button = dynamic_cast<ButtonItem*>(itemList.at(index.row()));
+        return QVariant::fromValue(button->getText());
+    }
+    case ButtonSizeRole:{
+        ButtonItem* button = dynamic_cast<ButtonItem*>(itemList.at(index.row()));
+        return QVariant::fromValue(button->getSize());
+    }
+    case CheckboxTextRole:{
+        CheckboxItem* checkbox = dynamic_cast<CheckboxItem*>(itemList.at(index.row()));
+        return QVariant::fromValue(checkbox->getText());
+    }
+    case CheckboxStateRole:{
+        CheckboxItem* checkbox = dynamic_cast<CheckboxItem*>(itemList.at(index.row()));
+        return QVariant::fromValue(checkbox->getState());
+    }
+    case CheckboxSizeRole:{
+        CheckboxItem* checkbox = dynamic_cast<CheckboxItem*>(itemList.at(index.row()));
+        return QVariant::fromValue(checkbox->getSize());
     }
 
     default:
             return QVariant();
     }
+}
 
-return QVariant();
+bool ListModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if(role == Qt::EditRole){
+
+      CheckboxItem *checkbox = dynamic_cast<CheckboxItem*>(itemList.value(index.row()));
+      checkbox->setState(static_cast<Qt::CheckState>(value.toUInt()));
+      return true;
+    }
+}
+
+
+Qt::ItemFlags ListModel::flags(const QModelIndex &index) const
+{
+    if(!index.isValid()){
+        return Qt::NoItemFlags;
+    }
+    else{
+        return Qt::ItemIsEnabled|Qt::ItemIsEditable|Qt::ItemIsSelectable;
+    }
 }

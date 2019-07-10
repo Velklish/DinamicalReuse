@@ -11,7 +11,7 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 
 set(DynamicalReuse_SRCS
 	base_items.cpp
-	listmode_delegate.cpp
+	listmodel_delegate.cpp
     list_model.cpp
     main_window.cpp
     main.cpp
