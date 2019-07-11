@@ -71,7 +71,6 @@ QVariant ListModel::data(const QModelIndex &index, int role) const
 bool ListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if(role == Qt::EditRole){
-
       CheckboxItem *checkbox = dynamic_cast<CheckboxItem*>(itemList.value(index.row()));
       checkbox->setState(static_cast<Qt::CheckState>(value.toUInt()));
       return true;

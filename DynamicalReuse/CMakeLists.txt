@@ -12,14 +12,14 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 set(DynamicalReuse_SRCS
 	base_items.cpp
 	listmodel_delegate.cpp
+	custom_view.cpp
     list_model.cpp
-    main_window.cpp
     main.cpp
 )
 set(DynamicalReuse_HDRS
-	main_window.h
 	list_model.h
 	base_items.h
+	custom_view.h
 	listmodel_delegate.h
 )
 

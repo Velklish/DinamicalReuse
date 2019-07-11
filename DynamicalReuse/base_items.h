@@ -11,6 +11,7 @@ enum widget_type{
     Button,
 };
 
+
 class BaseItems
 {
 public:
@@ -65,6 +66,7 @@ Q_DECLARE_METATYPE(CheckboxItem*);
 Q_DECLARE_METATYPE(CheckboxItem);
 
 Q_DECLARE_METATYPE(widget_type);
+
 
 
 #endif // BASE_ITEMS_H

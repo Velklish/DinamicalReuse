@@ -25,10 +25,12 @@ public:
     virtual void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
     void assembleButton(QPushButton &button,const QModelIndex &index) const;
     void assembleCheckbox(QCheckBox &checkbox,const QModelIndex &index) const;
-    // QAbstractItemDelegate interface
-public:
+public slots:
 
+    //void commitAndSaveData();
 };
+
+
 
 
 

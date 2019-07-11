@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         base_items.cpp \
+        custom_view.cpp \
         list_model.cpp \
         listmodel_delegate.cpp \
         main.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
         base_items.h \
+        custom_view.h \
         list_model.h \
         listmodel_delegate.h \
         main_window.h

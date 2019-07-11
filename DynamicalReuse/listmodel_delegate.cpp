@@ -29,6 +29,8 @@ void ListModelDelegate::assembleCheckbox(QCheckBox &checkbox, const QModelIndex 
 }
 
 
+
+
 void ListModelDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
 
@@ -63,12 +65,12 @@ QWidget *ListModelDelegate::createEditor(QWidget *parent, const QStyleOptionView
     switch(index.data(TypeRole).toInt())
     {
         case Checkbox:{
-            QCheckBox *editor = new QCheckBox(parent);           
+            QCheckBox *editor = new QCheckBox(parent);
             return editor;
         }
 
         case Button:{
-            QPushButton *editor = new QPushButton(parent);        
+            QPushButton *editor = new QPushButton(parent);
             return editor;
         }
         default: return parent;
@@ -98,8 +100,6 @@ void ListModelDelegate::updateEditorGeometry(QWidget *editor, const QStyleOption
 {
     editor->setGeometry(option.rect);
 }
-
-
 
 
 void ListModelDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
