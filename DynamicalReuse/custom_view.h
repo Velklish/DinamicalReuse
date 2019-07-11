@@ -20,16 +20,4 @@ protected:
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 #endif // CUSTOM_VIEW_H
