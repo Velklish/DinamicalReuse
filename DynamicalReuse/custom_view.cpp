@@ -17,7 +17,6 @@ void CustomView::mouseMoveEvent(QMouseEvent *event)
         previousIndex=currentIndex;
         openPersistentEditor(currentIndex);
     }
-
     else{
         if(currentIndex!=previousIndex && isPersistentEditorOpen(previousIndex)){
             openPersistentEditor(currentIndex);
