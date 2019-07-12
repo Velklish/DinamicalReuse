@@ -56,8 +56,7 @@ void ListModelDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
             button->setGeometry(option.rect);
             assembleButton(*button,index);
             QPixmap button_map = QPixmap::grabWidget(button);
-            QApplication::style()->drawItemPixmap(painter,option.rect,Qt::AlignLeft,button_map);
-            button->deleteLater();
+            QApplication::style()->drawItemPixmap(painter,option.rect,Qt::AlignLeft,button_map);          
             delete button;
             break;
         }
