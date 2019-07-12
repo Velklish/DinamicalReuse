@@ -1,7 +1,8 @@
-
+#include "main_window.h"
 #include "list_model.h"
-#include "listmodel_delegate.h"
-#include "custom_view.h"
+#include "list_model_delegate.h"
+#include "custom_listview.h"
+//#include <vld.h>
 
 #include <QApplication>
 #include <QListView>
@@ -24,7 +25,8 @@ int main(int argc, char *argv[])
 
     }
 
-    CustomView view;
+    CustomListView view;
+
     view.setMouseTracking(true);
     view.setEditTriggers(QListView::NoEditTriggers);
     view.setModel(model);

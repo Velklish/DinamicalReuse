@@ -25,12 +25,14 @@ void BaseItems::setSize(QSize size)
 BaseItems::~BaseItems(){}
 
 
-CheckboxItem::CheckboxItem() : BaseItems(){
+CheckboxItem::CheckboxItem() : BaseItems()
+{
     type = Checkbox;
     size = QSize(150,60);
 }
 
-void CheckboxItem::setText(QString text){
+void CheckboxItem::setText(QString text)
+{
 
     this->text = text;
 }
@@ -53,7 +55,8 @@ Qt::CheckState CheckboxItem::getState() const
 CheckboxItem::~CheckboxItem(){}
 
 
-ButtonItem::ButtonItem():BaseItems (){
+ButtonItem::ButtonItem():BaseItems ()
+{
     type = Button;
     size = QSize(150,60);
 }

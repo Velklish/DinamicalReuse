@@ -6,15 +6,14 @@
 
 #include <QAbstractListModel>
 
-enum CustomRoles{
-
+enum CustomRoles
+{
   ButtonTextRole=Qt::UserRole+1,
   ButtonSizeRole,
   CheckboxTextRole,
   CheckboxStateRole,
   CheckboxSizeRole,
   TypeRole,
-
 };
 
 

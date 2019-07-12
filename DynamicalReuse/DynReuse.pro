@@ -26,18 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         base_items.cpp \
-        custom_view.cpp \
+        custom_listview.cpp \
         list_model.cpp \
-        listmodel_delegate.cpp \
-        main.cpp \
-        main_window.cpp
+        list_model_delegate.cpp \
+        main.cpp
 
 HEADERS += \
         base_items.h \
-        custom_view.h \
+        custom_listview.h \
         list_model.h \
-        listmodel_delegate.h \
-        main_window.h
+        list_model_delegate.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

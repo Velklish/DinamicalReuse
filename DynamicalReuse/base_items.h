@@ -6,7 +6,8 @@
 #include <QMetaType>
 #include <QPushButton>
 
-enum widget_type{
+enum widget_type
+{
     Checkbox,
     Button,
 };
@@ -28,7 +29,10 @@ protected:
     QSize size;
 };
 
-class CheckboxItem : public BaseItems {
+
+
+class CheckboxItem : public BaseItems
+{
 public:
     CheckboxItem();
     virtual ~CheckboxItem(); 
@@ -47,7 +51,8 @@ private:
 };
 
 
-class ButtonItem : public BaseItems {
+class ButtonItem : public BaseItems
+{
 public:
     ButtonItem();   
     virtual ~ButtonItem();   
