@@ -12,6 +12,11 @@ class ListModelDelegate : public QStyledItemDelegate
 {
 public:
     ListModelDelegate();
+    ~ListModelDelegate() override;
+
+    QPushButton *button = new QPushButton;
+    QCheckBox *checkbox = new QCheckBox;
+
 
 public:
     virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;

@@ -3,7 +3,6 @@
 
 #include <base_items.h>
 
-
 #include <QAbstractListModel>
 
 enum CustomRoles

@@ -1,8 +1,6 @@
-#include "main_window.h"
 #include "list_model.h"
 #include "list_model_delegate.h"
 #include "custom_listview.h"
-//#include <vld.h>
 
 #include <QApplication>
 #include <QListView>
@@ -14,15 +12,17 @@ int main(int argc, char *argv[])
 
     ListModel *model = new ListModel();
 
-    for(int i=1;i<=1000;i++){
+    for(int i=1;i<=1000;i++)
+    {
         ButtonItem *button = new ButtonItem();
-        button->setText("button "+QString::number(i));
+        button->setText("Button number: "+QString::number(i));
+        button->setSize(QSize(200+i/10,40+i/100));
         model->Add(button);
-        CheckboxItem *checkbox = new CheckboxItem();
-        checkbox->setText("checkbox "+QString::number(i));
-        checkbox->setSize(QSize(200,40));
-        model->Add(checkbox);
 
+        CheckboxItem *checkbox = new CheckboxItem();
+        checkbox->setText("Checkbox number: "+QString::number(i));
+        checkbox->setSize(QSize(200+i/10,40+i/100));
+        model->Add(checkbox);
     }
 
     CustomListView view;

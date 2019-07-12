@@ -2,9 +2,12 @@
 #include <QApplication>
 #include <QFont>
 
-ListModelDelegate::ListModelDelegate() : QStyledItemDelegate ()
-{
+ListModelDelegate::ListModelDelegate() : QStyledItemDelegate (){}
 
+ListModelDelegate::~ListModelDelegate()
+{
+    delete button;
+    delete checkbox;
 }
 
 void ListModelDelegate::assembleButton(QPushButton &button,const QModelIndex &index) const
@@ -42,22 +45,18 @@ void ListModelDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     {
         case Checkbox:
         {
-            QCheckBox *checkbox = new QCheckBox();
             checkbox->setGeometry(option.rect);
             assembleCheckbox(*checkbox,index);
             QPixmap widget_map = QPixmap::grabWidget(checkbox);
-            QApplication::style()->drawItemPixmap(painter,option.rect,Qt::AlignLeft,widget_map);
-            delete checkbox;
+            QApplication::style()->drawItemPixmap(painter,option.rect,Qt::AlignLeft,widget_map);    
             break;
         }
         case Button:
         {
-            QPushButton *button = new QPushButton();
             button->setGeometry(option.rect);
             assembleButton(*button,index);
             QPixmap button_map = QPixmap::grabWidget(button);
-            QApplication::style()->drawItemPixmap(painter,option.rect,Qt::AlignLeft,button_map);          
-            delete button;
+            QApplication::style()->drawItemPixmap(painter,option.rect,Qt::AlignLeft,button_map);
             break;
         }
     }
@@ -119,7 +118,6 @@ void ListModelDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
             QCheckBox *checkbox = static_cast<QCheckBox*>(editor);
             Qt::CheckState state = checkbox->checkState();
             model->setData(index,state,CheckboxStateRole);
-           // delete checkbox;
             break;
         }
     }

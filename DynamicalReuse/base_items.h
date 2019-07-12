@@ -4,7 +4,6 @@
 #include <QString>
 #include <QSize>
 #include <QMetaType>
-#include <QPushButton>
 
 enum widget_type
 {
@@ -46,8 +45,6 @@ public:
 private:
     QString text = "CheckBox Widget";
     Qt::CheckState state = Qt::Unchecked;
-
-
 };
 
 
@@ -63,6 +60,7 @@ public:
 private:
     QString text = "Button Widget";
 };
+
 
 Q_DECLARE_METATYPE(ButtonItem*);
 Q_DECLARE_METATYPE(ButtonItem);

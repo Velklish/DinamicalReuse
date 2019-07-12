@@ -1,11 +1,8 @@
 #include "base_items.h"
 
+BaseItems::BaseItems(){}
 
-
-BaseItems::BaseItems()
-{
-
-}
+BaseItems::~BaseItems(){}
 
 widget_type BaseItems::getType() const
 {
@@ -22,7 +19,6 @@ void BaseItems::setSize(QSize size)
     this->size = size;
 }
 
-BaseItems::~BaseItems(){}
 
 
 CheckboxItem::CheckboxItem() : BaseItems()
@@ -55,13 +51,12 @@ Qt::CheckState CheckboxItem::getState() const
 CheckboxItem::~CheckboxItem(){}
 
 
+
 ButtonItem::ButtonItem():BaseItems ()
 {
     type = Button;
     size = QSize(150,60);
 }
-
-
 
 ButtonItem::~ButtonItem(){}
 

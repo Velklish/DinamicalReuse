@@ -1,15 +1,13 @@
 #include "list_model.h"
 
-ListModel::ListModel() : QAbstractListModel ()
-{
+ListModel::ListModel() : QAbstractListModel (){}
 
-}
 
 ListModel::~ListModel()
 {
     int count = itemList.count();
 
-    for(int i=0; i < count; i++)
+    for (int i=0; i < count; i++)
         delete itemList[i];
 }
 
@@ -69,7 +67,7 @@ QVariant ListModel::data(const QModelIndex &index, int role) const
     }
 
     default:
-            return QVariant();
+        return QVariant();
     }
 }
 
@@ -81,12 +79,16 @@ bool ListModel::setData(const QModelIndex &index, const QVariant &value, int rol
       checkbox->setState(static_cast<Qt::CheckState>(value.toUInt()));
       return true;
     }
+    else
+    {
+       return false;
+    }
 }
 
 
 Qt::ItemFlags ListModel::flags(const QModelIndex &index) const
 {
-    if(!index.isValid())
+    if (!index.isValid())
         return Qt::NoItemFlags;
     else
         return Qt::ItemIsEnabled|Qt::ItemIsEditable|Qt::ItemIsSelectable;
